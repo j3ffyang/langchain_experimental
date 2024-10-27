@@ -7,7 +7,7 @@ import bs4
 import os
 
 os.environ["HTTPS_PROXY"] = "http://127.0.0.1:10809"
-os.environ["OPENAI_API_KEY"] = "sk-c7XNWGHX_KrmX8ZqP13T7QYrroYnvqjQMeKCA-sBiWT3BlbkFJpwGC5pPkuImsx7tex9iSF9Hn4hSkqYr9ajL5h8EiQA"
+os.environ["OPENAI_API_KEY"] = "xxx"
 
 # %%
 
