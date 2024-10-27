@@ -1,0 +1,11 @@
+name;country;details;source
+Colcannon Potatoes; Ireland; This classic Irish dish is a family favorite, typically part of St. Patrick's Day menu. It includes lamb chops, carrots, and soda bread;tasteofhome.com
+Aebleskiver; Denmark; Aebleskiver are Danish pancake balls sold in bakeries and street markets. They require an aebleskiver pan for making ;tasteofhome.com
+Israeli Malabi with Pomegranate Syrup; Israel; Malabi is a famous, easy-to-make sweet milk pudding from Israel. The recipe allows for rose syrup to be used instead of pomegranate syrup ;fouraroundtheworld.com
+Puerto Rican Sofrito; Puerto Rico; Sofrito forms the base for almost every savory Puerto Rican dish. It is made with flavorful herbs, vegetables, and spices ;
+Authentic Italian pasta alla carbonara; Italy; A traditional dish from Rome, it's made with eggs, guanciale,  a cut of pork), and percorino romano  cheese) ;
+Moroccan Lamb Tagine With Apricots; Morocco; This fruity Moroccan Lamb Tagine can be easily made in your Instant Pot, slow cooker, or on the stovetop ;fouraroundtheworld.com
+Katsudon Pork Cutlet Rice Bowl; Japan; Katsudon is a Japanese comfort food dish that consists of eggs and tonkatsu, pork breaded with panko crumbs and deep-fried, served in a sweet and salty broth over rice ;thespruceeats.com
+Mexican Pozole; Mexico; Pozole is a popular pork-based stew from Mexico that is traditionally served at Christmas Eve celebrations, but is also enjoyed year-round ;thespruceeats.com
+Polish Pierogi Ruskie; Poland; Polish pierogi ruskie are delicious dumplings stuffed with potatoes and cheese. They can be either boiled or pan-fried;thespruceeats.com
+Spicy Korean Kimchi Jjigae; Korea; Korea’s national dish, kimchi, stars in this fiery, flavorful stew with thinly-sliced beef, cubed tofu, garlic, and gochujang ;thespruceeats.com
