@@ -1,4 +1,4 @@
-This GitHub project showcases a collection of Python code leveraging Langchain, Hugging Face, and various data science libraries. The repository includes:
+This GitHub project showcases a collection of Python code leveraging LangChain, Hugging Face, and various data science libraries. The repository includes:
 
 - Experimental Code: Features prototypes and some production-ready components, demonstrating innovative applications in natural language processing and machine learning.
 - Documentation Contributions: Contains answers and insights shared on Stack Overflow, providing valuable context and guidance for users navigating the codebase.
