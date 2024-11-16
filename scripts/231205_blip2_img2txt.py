@@ -7,7 +7,7 @@ model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-capt
 
 # img_url = 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/demo.jpg' 
 # raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB')
-raw_image = Image.open("./231103_redlamp.jpg").convert('RGB')
+raw_image = Image.open("/home/jeff/Downloads/231103_redlamp.jpg").convert('RGB')
 # raw_image = Image.open("./240122_mig_cockpit.jpg").convert('RGB')
 # raw_image = Image.open("./231009_cultureRevolution.png").convert('RGB')
 
