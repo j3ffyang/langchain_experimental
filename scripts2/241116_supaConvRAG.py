@@ -41,7 +41,7 @@ supabase_client = create_client(supabase_url, supabase_key)
 # vectorstore = SupabaseVectorStore.from_documents(
 #     chunks,
 #     embedding = embedding,
-#     client = supabase,
+#     client = supabase_client,
 #     table_name = "documents",
 #     query_name = "match_documents",
 #     chunk_size = 500,
@@ -69,23 +69,22 @@ retriever = vectorstore.as_retriever()
 
 from langchain_ollama import ChatOllama
 llm = ChatOllama(
-    model="mistral",
+    model="gemma:2b",
     temperature=0.5,
 )
 
-import os
-HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-
-# from langchain_huggingface import HuggingFaceEndpoint
-# # repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
-# # repo_id = "google/gemma-2b"
-# repo_id = "meta-llama/Llama-3.2-1B"
-# llm = HuggingFaceEndpoint(
-#     repo_id = repo_id,
-#     temperature = 0.5,
-#     huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN,
-#     max_new_tokens = 250,
-# )
+## import os
+## HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+## from langchain_huggingface import HuggingFaceEndpoint
+## # repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
+## # repo_id = "google/gemma-2b"
+## repo_id = "meta-llama/Llama-3.2-1B"
+## llm = HuggingFaceEndpoint(
+##     repo_id = repo_id,
+##     temperature = 0.5,
+##     huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN,
+##     max_new_tokens = 250,
+## )
 
 
 from langchain_core.prompts.chat import (
@@ -142,31 +141,25 @@ from langchain.globals import set_debug, set_verbose
 set_debug(True)
 set_verbose(True)
 
-# from langchain_core.messages import AIMessage, HumanMessage
+from langchain_core.messages import AIMessage, HumanMessage
 
 chat_history = []
 
-question = "What does the emperor like?"
-ai_msg_1 = rag_chain.invoke({"input": question, "chat_history": chat_history})
-print(ai_msg_1)
+def process_question(question):
+    ai_msg = rag_chain.invoke({"input": question, "chat_history": chat_history})
+    chat_history.extend(
+       [
+           HumanMessage(content=question),
+           AIMessage(content=ai_msg["answer"]),
+       ]
+    )
+    return ai_msg["answer"]
 
-# chat_history.extend(
-#     [
-#         HumanMessage(content=question),
-#         AIMessage(content=ai_msg_1["answer"]),
-#     ]
-# )
-# 
-# second_question = "Who is he?"
-# ai_msg_2 = rag_chain.invoke({"input": second_question, "chat_history": chat_history})
-# 
-# print(ai_msg_2)
-# 
-# 
-# # from pprint import pprint
-# # while True:
-# #     user_input = input("Enter your question: ")
-# #     if user_input == "exit":
-# #         break
-# #     else:
-# #         pprint(rag_chain.invoke({"input": user_input, "chat_history": chat_history}))
+
+from pprint import pprint
+while True:
+    user_input = input("Enter your question: ")
+    if user_input == "exit":
+        break
+    else:
+        pprint(process_question(user_input))
