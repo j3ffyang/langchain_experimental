@@ -1,14 +1,8 @@
+# https://python.langchain.com/docs/how_to/qa_chat_history_how_to/
+
 import bs4
 from langchain_community.document_loaders import WebBaseLoader
-loader = WebBaseLoader(
-    # web_paths=("https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Emperor%27s_New_Clothes",),
-    web_paths=("https://andersen.sdu.dk/vaerk/hersholt/TheEmperorsNewClothes_e.html",),
-    bs_kwargs=dict(
-        parse_only=bs4.SoupStrainer(
-            class_=("post-content", "post-title", "post-header")
-        )
-    ),
-)
+loader = WebBaseLoader("https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Emperor%27s_New_Clothes")
 documents = loader.load()
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -67,24 +61,24 @@ vectorstore = SupabaseVectorStore(
 retriever = vectorstore.as_retriever()
 
 
-from langchain_ollama import ChatOllama
-llm = ChatOllama(
-    model="gemma:2b",
-    temperature=0.5,
-)
-
-## import os
-## HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-## from langchain_huggingface import HuggingFaceEndpoint
-## # repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
-## # repo_id = "google/gemma-2b"
-## repo_id = "meta-llama/Llama-3.2-1B"
-## llm = HuggingFaceEndpoint(
-##     repo_id = repo_id,
-##     temperature = 0.5,
-##     huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN,
-##     max_new_tokens = 250,
+## from langchain_ollama import ChatOllama
+## llm = ChatOllama(
+##     model="mistral",
+##     temperature=0.5,
 ## )
+
+import os
+HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+from langchain_huggingface import HuggingFaceEndpoint
+repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
+# repo_id = "google/gemma-2b"
+# repo_id = "meta-llama/Llama-3.2-1B"
+llm = HuggingFaceEndpoint(
+    repo_id = repo_id,
+    temperature = 0.5,
+    huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN,
+    max_new_tokens = 250,
+)
 
 
 from langchain_core.prompts.chat import (
